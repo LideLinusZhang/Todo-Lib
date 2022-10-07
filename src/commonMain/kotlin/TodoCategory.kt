@@ -3,24 +3,19 @@ package edu.todo.lib
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
-class TodoItem(
+class TodoCategory(
     name: String,
     description: String = String(),
-    categoryId: Int? = null,
-    importance: ItemImportance = ItemImportance.NORMAL,
     ownerId: Int
 ): Serializable {
-    val Id: Int
+    val UniqueId: Int
     var Name: String = name
     var Description: String = description
-    var CategoryId: Int? = categoryId
-    var Importance: ItemImportance = importance
-    val Owners: MutableList<Int>
+    val Owners: MutableList<Int> = mutableListOf()
 
     init {
-        this.Id = getUniqueId()
-        this.Owners = mutableListOf()
-        Owners.add(ownerId)
+        UniqueId= getUniqueId()
+        Owners.add(ownerId);
     }
 
     companion object {
