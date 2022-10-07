@@ -1,6 +1,10 @@
 package edu.todo.lib
 
-public enum class ItemImportance {
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+
+enum class ItemImportance {
     CRITICAL,
     VERY_HIGH,
     HIGH,
@@ -9,21 +13,29 @@ public enum class ItemImportance {
     LOW
 }
 
-public class TodoItem(
+class TodoItem(
     name: String,
     description: String = String(),
     categoryId: Int? = null,
     importance: ItemImportance = ItemImportance.NORMAL,
     ownerId: Int
 ) {
-    val Id: Int = getUniqueId()
+    val Id: Int
     var Name: String = name
     var Description: String = description
     var CategoryId: Int? = categoryId
     var Importance: ItemImportance = importance
-    val Owners: MutableList<Int> = mutableListOf()
+    val Owners: MutableList<Int>
 
     init {
+        this.Id = getUniqueId()
+        this.Owners = mutableListOf()
         Owners.add(ownerId)
     }
+
+    companion object {
+        fun decodeFromString(jsonString: String): TodoItem = Json.decodeFromString(jsonString)
+    }
+
+    fun encodeToString(): String = Json.encodeToString(this)
 }
