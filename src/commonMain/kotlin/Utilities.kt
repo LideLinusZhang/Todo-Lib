@@ -2,9 +2,9 @@ package edu.todo.lib
 
 import kotlinx.uuid.UUID
 
-fun getUniqueId(): Int = CRC32.compute(UUID.toString())
+internal fun getUniqueId(): Int = CRC32.compute(UUID.toString())
 
-public sealed class CRC32 {
+internal sealed class CRC32 {
     companion object {
         private val CRC64_TABLE = longArrayOf(
             0x0000000000000000L, 0x42F0E1EBA9EA3693L,
