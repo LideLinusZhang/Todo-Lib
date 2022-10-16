@@ -8,7 +8,7 @@ import kotlinx.serialization.json.Json
 class TodoItem(
     var name: String,
     var description: String,
-    var categoryId: Int,
+    var categoryId: UInt,
     var importance: ItemImportance,
     var deadline: LocalDate?,
     ownerId: UInt
