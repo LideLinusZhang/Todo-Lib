@@ -1,12 +1,9 @@
 package edu.todo.lib
 
-class Owner(userName: String) {
-    val UniqueId: Int
-    var UserName: String = userName
-    // TODO: user authentication info
-    val TodoCategories: MutableList<TodoCategory> = mutableListOf()
+@Suppress("unused")
+class Owner(var userName: String) {
+    val uniqueId: Int = getUniqueId()
 
-    init {
-        UniqueId = getUniqueId()
-    }
+    // TODO: user authentication info
+    val todoCategories: MutableList<TodoCategory> = mutableListOf()
 }

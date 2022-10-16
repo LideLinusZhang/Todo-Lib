@@ -1,5 +1,6 @@
 package edu.todo.lib
 
+@Suppress("unused")
 enum class ItemImportance {
     CRITICAL,
     VERY_HIGH,
