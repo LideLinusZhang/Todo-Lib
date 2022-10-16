@@ -30,6 +30,7 @@ kotlin {
             dependencies {
                 implementation("app.softwork:kotlinx-uuid-core:0.0.17")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
             }
         }
         commonTest {
