@@ -11,10 +11,10 @@ class TodoItem(
     var categoryId: Int,
     var importance: ItemImportance,
     var deadline: LocalDate?,
-    ownerId: Int
+    ownerId: UInt
 ): Serializable {
-    val uniqueId: Int = getUniqueId()
-    val owners: MutableList<Int> = mutableListOf()
+    val uniqueId: UInt = getUniqueId()
+    val owners: MutableList<UInt> = mutableListOf()
 
     init {
         owners.add(ownerId)

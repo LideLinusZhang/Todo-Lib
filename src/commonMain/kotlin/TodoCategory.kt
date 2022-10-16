@@ -7,10 +7,10 @@ import kotlinx.serialization.json.Json
 class TodoCategory(
     var name: String,
     var description: String,
-    ownerId: Int
+    ownerId: UInt
 ): Serializable {
-    val uniqueId: Int
-    val owners: MutableList<Int> = mutableListOf()
+    val uniqueId: UInt
+    val owners: MutableList<UInt> = mutableListOf()
 
     init {
         uniqueId= getUniqueId()

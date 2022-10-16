@@ -2,7 +2,7 @@ package edu.todo.lib
 
 import kotlinx.uuid.UUID
 
-internal fun getUniqueId(): Int = CRC32.compute(UUID.toString())
+internal fun getUniqueId(): UInt = CRC32.compute(UUID().toString())
 
 internal sealed class CRC32 {
     companion object {
@@ -61,7 +61,7 @@ internal sealed class CRC32 {
             0x5DEDC41A34BBEEB2L, 0x1F1D25F19D51D821L, -0x27f3f83298907c6cL, -0x650319d9317a4af9L
         )
 
-        fun compute(value: String): Int {
+        fun compute(value: String): UInt {
             var crc = -0x1L
             val buffer: ByteArray = value.encodeToByteArray()
 
@@ -71,7 +71,7 @@ internal sealed class CRC32 {
                 crc = CRC64_TABLE[tabIndex] xor (crc shl 8)
             }
 
-            return ((crc xor -0x1L) and -0x1L).toInt()
+            return ((crc xor -0x1L) and -0x1L).toUInt()
         }
     }
 }
