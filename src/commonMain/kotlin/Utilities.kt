@@ -65,13 +65,13 @@ internal sealed class CRC32 {
             var crc = -0x1L
             val buffer: ByteArray = value.encodeToByteArray()
 
-            var tabIndex = 0
+            var tabIndex: Int
             for (i in buffer.indices) {
                 tabIndex = (crc shr 56).toInt() xor buffer[i].toInt() and 0xFF
                 crc = CRC64_TABLE[tabIndex] xor (crc shl 8)
             }
 
-            return ((crc xor -0x1L) as Long and -0x1L).toInt()
+            return ((crc xor -0x1L) and -0x1L).toInt()
         }
     }
 }
