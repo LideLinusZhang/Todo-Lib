@@ -10,7 +10,7 @@ class TodoItem(
     var description: String,
     var categoryId: Int,
     var importance: ItemImportance,
-    var deadline: LocalDate,
+    var deadline: LocalDate?,
     ownerId: Int
 ): Serializable {
     val uniqueId: Int = getUniqueId()
