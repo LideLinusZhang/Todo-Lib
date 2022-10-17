@@ -1,6 +1,27 @@
+@file:Suppress("unused")
+
 package edu.todo.lib
 
 import kotlinx.uuid.UUID
+
+fun breakLines(s: String, lineWidth: Int): String {
+    return buildString {
+        var currentLineLength = 0
+        for (word in s.split(Regex("\\\\s+"))){
+            if(currentLineLength + 1 + word.length >lineWidth) {
+                append("\n")
+                currentLineLength = 0
+            }
+            else {
+                append(" ")
+                currentLineLength++
+            }
+
+            append(word)
+            currentLineLength+=word.length
+        }
+    }
+}
 
 internal fun getUniqueId(): UInt = CRC32.compute(UUID().toString())
 

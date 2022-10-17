@@ -6,14 +6,13 @@ import kotlinx.serialization.json.Json
 @Suppress("unused")
 class TodoCategory(
     var name: String,
-    var description: String,
+    var favored: Boolean,
     ownerId: UInt
 ): Serializable {
-    val uniqueId: UInt
+    val uniqueId: UInt = getUniqueId()
     val owners: MutableList<UInt> = mutableListOf()
 
     init {
-        uniqueId= getUniqueId()
         owners.add(ownerId)
     }
 
