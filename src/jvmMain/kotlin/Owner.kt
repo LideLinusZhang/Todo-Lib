@@ -1,4 +1,4 @@
-package todo.lib
+package edu.uwaterloo.cs.todo.lib
 
 import java.util.UUID
 
