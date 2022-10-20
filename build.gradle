@@ -21,17 +21,12 @@ kotlin {
             useJUnitPlatform()
         }
     }
-    macosArm64()
-    macosX64()
-    linuxX64()
-    mingwX64()
     
     sourceSets {
         commonMain {
             dependencies {
-                implementation("app.softwork:kotlinx-uuid-core:0.0.17")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+                implementation "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
             }
         }
         commonTest {
@@ -43,12 +38,6 @@ kotlin {
 
         }
         jvmTest {
-
-        }
-        nativeMain {
-
-        }
-        nativeTest {
 
         }
     }
