@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="todo-lib-jvm-1.0.0.3-DEV">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="todo-lib-jvm-1.0.0.3-DEV.jar">
+      <element id="module-output" name="todo-lib.jvmMain" />
+    </root>
+  </artifact>
+</component>

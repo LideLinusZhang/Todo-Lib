@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package edu.todo.lib
+package todo.lib
 
 fun breakLines(s: String, lineWidth: Int): String {
     return buildString {

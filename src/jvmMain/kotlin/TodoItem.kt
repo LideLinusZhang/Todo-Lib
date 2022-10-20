@@ -1,4 +1,4 @@
-package edu.todo.lib
+package todo.lib
 
 import kotlinx.datetime.LocalDate
 import java.util.UUID
