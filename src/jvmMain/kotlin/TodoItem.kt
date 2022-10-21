@@ -10,5 +10,5 @@ actual interface TodoItem{
     val description: String
     val categoryId: UUID
     val importance: ItemImportance
-    val deadline: LocalDate
+    val deadline: LocalDate?
 }
