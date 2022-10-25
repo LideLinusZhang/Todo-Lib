@@ -2,6 +2,10 @@
 
 package edu.uwaterloo.cs.todo.lib
 
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+
 fun breakLines(s: String, lineWidth: Int): String {
     return buildString {
         var currentLineLength = 0
@@ -19,4 +23,12 @@ fun breakLines(s: String, lineWidth: Int): String {
             currentLineLength+=word.length
         }
     }
+}
+
+fun <T> serializeList(list: List<T>): String {
+    return Json.encodeToString(list)
+}
+
+fun <T> deserializeList(json: String): List<T> {
+    return Json.decodeFromString(json)
 }
