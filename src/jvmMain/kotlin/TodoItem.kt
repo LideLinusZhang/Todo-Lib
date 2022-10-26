@@ -1,6 +1,7 @@
 package edu.uwaterloo.cs.todo.lib
 
 import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
 import java.util.UUID
 
 @Suppress("unused")
@@ -11,4 +12,5 @@ actual interface TodoItem{
     val categoryId: UUID
     val importance: ItemImportance
     val deadline: LocalDate?
+    val modifiedTime: LocalDateTime
 }
