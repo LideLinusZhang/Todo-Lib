@@ -7,5 +7,5 @@ actual interface Owner {
     val uniqueId: UUID
     val name: String
     // TODO: user authentication info
-    val todoCategories: MutableList<TodoCategory>
+    val todoCategories: MutableList<TodoCategoryModel>
 }

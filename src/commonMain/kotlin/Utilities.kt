@@ -25,10 +25,18 @@ fun breakLines(s: String, lineWidth: Int): String {
     }
 }
 
-fun <T> serializeList(list: List<T>): String {
+fun serializeItemList(list: List<TodoItemModel>): String {
     return Json.encodeToString(list)
 }
 
-fun <T> deserializeList(json: String): List<T> {
+fun deserializeItemList(json: String): List<TodoItemModel> {
+    return Json.decodeFromString(json)
+}
+
+fun serializeCategoryList(list: List<TodoCategoryModel>): String {
+    return Json.encodeToString(list)
+}
+
+fun deserializeCategoryList(json: String): List<TodoCategoryModel> {
     return Json.decodeFromString(json)
 }
