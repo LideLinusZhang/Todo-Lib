@@ -8,8 +8,8 @@ import java.util.UUID
 @Serializable
 actual data class TodoCategoryModel (
     @Serializable(with = UUIDAsStringSerializer::class)
-    val uniqueId: UUID,
-    val name: String,
-    val favoured: Boolean,
+    val uniqueId: UUID?,
+    val name: String?,
+    val favoured: Boolean?,
     val modifiedTime: LocalDateTime
 )
