@@ -9,12 +9,12 @@ import java.util.UUID
 @Serializable
 actual data class TodoItemModel(
     @Serializable(with = UUIDAsStringSerializer::class)
-    val uniqueId: UUID?,
-    val name: String?,
-    val description: String?,
+    val uniqueId: UUID,
+    val name: String,
+    val description: String,
     @Serializable(with = UUIDAsStringSerializer::class)
-    val categoryId: UUID?,
-    val importance: ItemImportance?,
+    val categoryId: UUID,
+    val importance: ItemImportance,
     val deadline: LocalDate?,
     val modifiedTime: LocalDateTime
 )
