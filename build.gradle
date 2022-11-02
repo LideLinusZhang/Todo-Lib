@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'edu.uwaterloo.cs'
-version = '1.0.0.20-DEV'
+version = '1.0.0.21-DEV'
 
 repositories {
     mavenCentral()
@@ -25,7 +25,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
                 implementation "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
             }
         }
@@ -35,7 +35,9 @@ kotlin {
             }
         }
         jvmMain {
-
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+            }
         }
         jvmTest {
 
