@@ -14,6 +14,7 @@ actual data class TodoItemModel(
     val description: String,
     @Serializable(with = UUIDAsStringSerializer::class)
     val categoryId: UUID,
+    val favoured: Boolean,
     val importance: ItemImportance,
     val deadline: LocalDate?,
     val modifiedTime: LocalDateTime
