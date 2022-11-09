@@ -15,13 +15,14 @@ kotlin {
     jvm {
         compilations.all {
             kotlinOptions.jvmTarget = '1.8'
+            // Don't change or it will crash on JavaFX GUI. Test before change if change is absolutely required.
         }
         withJava()
         testRuns["test"].executionTask.configure {
             useJUnitPlatform()
         }
     }
-    
+
     sourceSets {
         commonMain {
             dependencies {
@@ -46,8 +47,8 @@ kotlin {
 publishing {
     repositories {
         maven {
-            url= uri("https://git.uwaterloo.ca/api/v4/projects/69446/packages/maven")
-            name="GitLab"
+            url = uri("https://git.uwaterloo.ca/api/v4/projects/69446/packages/maven")
+            name = "GitLab"
             credentials(HttpHeaderCredentials) {
                 name = "Deploy-Token"
                 value = "KtqpZE3e2fURjpqgd7BG" // the token is stored in ~/.gradle/gradle.properties
