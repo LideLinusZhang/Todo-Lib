@@ -1,4 +1,4 @@
 package edu.uwaterloo.cs.todo.lib
 
 @Suppress("unused")
-expect interface Owner
+expect class UserModel
