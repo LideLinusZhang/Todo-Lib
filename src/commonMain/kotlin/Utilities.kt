@@ -6,6 +6,8 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+const val realm: String = "edu.uwaterloo.cs.todo"
+
 fun breakLines(s: String, lineWidth: Int): String {
     return buildString {
         var currentLineLength = 0
