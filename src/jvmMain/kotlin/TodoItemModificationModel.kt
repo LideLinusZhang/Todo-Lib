@@ -9,6 +9,7 @@ import kotlinx.serialization.Serializable
 actual data class TodoItemModificationModel(
     val name: String?,
     val description: String?,
+    val favoured: Boolean?,
     val importance: ItemImportance?,
     val deadline: LocalDate?,
     val modifiedTime: LocalDateTime
