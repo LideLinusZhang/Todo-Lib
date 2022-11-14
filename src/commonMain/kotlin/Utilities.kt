@@ -5,13 +5,15 @@ package edu.uwaterloo.cs.todo.lib
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.security.MessageDigest
-import kotlin.text.Charsets.UTF_8
 
+const val configFileName: String = "config.json"
 const val realm: String = "edu.uwaterloo.cs.todo"
 
-fun getHashedPassword(userName: String, password: String): ByteArray =
-    MessageDigest.getInstance("MD5").digest("$userName:$realm:$password".toByteArray(UTF_8))
+expect fun readConfigFile(configFilePath: String = configFileName): Pair<Boolean, CloudServiceConfig?>
+
+expect fun writeConfigFile(config: CloudServiceConfig, configFilePath: String = configFileName): Boolean
+
+expect fun getHashedPassword(userName: String, password: String): ByteArray
 
 fun breakLines(s: String, lineWidth: Int): String {
     return buildString {

@@ -3,7 +3,7 @@ package edu.uwaterloo.cs.todo.lib
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable
-import java.util.UUID
+import java.util.*
 
 @Suppress("unused")
 @Serializable

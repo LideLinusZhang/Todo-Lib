@@ -2,11 +2,11 @@ package edu.uwaterloo.cs.todo.lib
 
 import kotlinx.datetime.LocalDateTime
 import kotlinx.serialization.Serializable
-import java.util.UUID
+import java.util.*
 
 @Suppress("unused")
 @Serializable
-actual data class TodoCategoryModel (
+actual data class TodoCategoryModel(
     @Serializable(with = UUIDAsStringSerializer::class)
     val uniqueId: UUID,
     val name: String,
