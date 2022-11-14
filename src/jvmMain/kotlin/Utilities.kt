@@ -9,6 +9,8 @@ import java.io.File
 import java.security.MessageDigest
 import kotlin.text.Charsets.UTF_8
 
+actual const val configFileName: String = "config.json"
+actual const val realm: String = "edu.uwaterloo.cs.todo"
 
 actual fun readConfigFile(configFilePath: String): Pair<Boolean, CloudServiceConfig?> {
     val configFile = File(configFilePath)
@@ -72,4 +74,3 @@ actual fun serializeCategoryList(list: List<TodoCategoryModel>): String {
 actual fun deserializeCategoryList(json: String): List<TodoCategoryModel> {
     return Json.decodeFromString(json)
 }
-

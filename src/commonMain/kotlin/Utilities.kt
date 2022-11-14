@@ -2,8 +2,8 @@
 
 package edu.uwaterloo.cs.todo.lib
 
-const val configFileName: String = "config.json"
-const val realm: String = "edu.uwaterloo.cs.todo"
+expect val configFileName: String
+expect val realm: String
 
 expect fun readConfigFile(configFilePath: String = configFileName): Pair<Boolean, CloudServiceConfig?>
 
