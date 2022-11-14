@@ -2,47 +2,21 @@
 
 package edu.uwaterloo.cs.todo.lib
 
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import java.security.MessageDigest
-import kotlin.text.Charsets.UTF_8
+expect val configFileName: String
+expect val realm: String
 
-const val realm: String = "edu.uwaterloo.cs.todo"
+expect fun readConfigFile(configFilePath: String = configFileName): Pair<Boolean, CloudServiceConfig?>
 
-fun getHashedPassword(userName: String, password: String): ByteArray =
-    MessageDigest.getInstance("MD5").digest("$userName:$realm:$password".toByteArray(UTF_8))
+expect fun writeConfigFile(config: CloudServiceConfig, configFilePath: String = configFileName): Boolean
 
-fun breakLines(s: String, lineWidth: Int): String {
-    return buildString {
-        var currentLineLength = 0
-        for (word in s.split(Regex("\\\\s+"))) {
-            if (currentLineLength + 1 + word.length > lineWidth) {
-                append("\n")
-                currentLineLength = 0
-            } else {
-                append(" ")
-                currentLineLength++
-            }
+expect fun getHashedPassword(userName: String, password: String): ByteArray
 
-            append(word)
-            currentLineLength += word.length
-        }
-    }
-}
+expect fun breakLines(s: String, lineWidth: Int): String
 
-fun serializeItemList(list: List<TodoItemModel>): String {
-    return Json.encodeToString(list)
-}
+expect fun serializeItemList(list: List<TodoItemModel>): String
 
-fun deserializeItemList(json: String): List<TodoItemModel> {
-    return Json.decodeFromString(json)
-}
+expect fun deserializeItemList(json: String): List<TodoItemModel>
 
-fun serializeCategoryList(list: List<TodoCategoryModel>): String {
-    return Json.encodeToString(list)
-}
+expect fun serializeCategoryList(list: List<TodoCategoryModel>): String
 
-fun deserializeCategoryList(json: String): List<TodoCategoryModel> {
-    return Json.decodeFromString(json)
-}
+expect fun deserializeCategoryList(json: String): List<TodoCategoryModel>
