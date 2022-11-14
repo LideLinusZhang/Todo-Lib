@@ -2,9 +2,12 @@
 
 package edu.uwaterloo.cs.todo.lib
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
+import kotlinx.serialization.json.encodeToStream
 import java.io.File
 import java.security.MessageDigest
 import kotlin.text.Charsets.UTF_8
@@ -12,13 +15,13 @@ import kotlin.text.Charsets.UTF_8
 actual const val configFileName: String = "config.json"
 actual const val realm: String = "edu.uwaterloo.cs.todo"
 
+@OptIn(ExperimentalSerializationApi::class)
 actual fun readConfigFile(configFilePath: String): Pair<Boolean, CloudServiceConfig?> {
     val configFile = File(configFilePath)
 
     return if (configFile.exists()) {
         try {
-            val content = configFile.readText()
-            val output = Json.decodeFromString<CloudServiceConfig>(content)
+            val output = Json.decodeFromStream<CloudServiceConfig>(configFile.inputStream())
             Pair(true, output)
         } catch (_: Exception) {
             Pair(false, null)
@@ -26,12 +29,12 @@ actual fun readConfigFile(configFilePath: String): Pair<Boolean, CloudServiceCon
     } else Pair(true, null)
 }
 
+@OptIn(ExperimentalSerializationApi::class)
 actual fun writeConfigFile(config: CloudServiceConfig, configFilePath: String): Boolean {
     val configFile = File(configFilePath)
 
     return try {
-        val configContent = Json.encodeToString(config)
-        configFile.writeText(configContent)
+        Json.encodeToStream(config, configFile.outputStream())
         true
     } catch (_: Exception) {
         false
