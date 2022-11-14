@@ -39,3 +39,37 @@ actual fun writeConfigFile(config: CloudServiceConfig, configFilePath: String): 
 actual fun getHashedPassword(userName: String, password: String): ByteArray =
     MessageDigest.getInstance("MD5").digest("$userName:$realm:$password".toByteArray(UTF_8))
 
+actual fun breakLines(s: String, lineWidth: Int): String {
+    return buildString {
+        var currentLineLength = 0
+        for (word in s.split(Regex("\\\\s+"))) {
+            if (currentLineLength + 1 + word.length > lineWidth) {
+                append("\n")
+                currentLineLength = 0
+            } else {
+                append(" ")
+                currentLineLength++
+            }
+
+            append(word)
+            currentLineLength += word.length
+        }
+    }
+}
+
+actual fun serializeItemList(list: List<TodoItemModel>): String {
+    return Json.encodeToString(list)
+}
+
+actual fun deserializeItemList(json: String): List<TodoItemModel> {
+    return Json.decodeFromString(json)
+}
+
+actual fun serializeCategoryList(list: List<TodoCategoryModel>): String {
+    return Json.encodeToString(list)
+}
+
+actual fun deserializeCategoryList(json: String): List<TodoCategoryModel> {
+    return Json.decodeFromString(json)
+}
+

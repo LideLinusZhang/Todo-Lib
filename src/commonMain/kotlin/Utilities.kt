@@ -2,10 +2,6 @@
 
 package edu.uwaterloo.cs.todo.lib
 
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-
 const val configFileName: String = "config.json"
 const val realm: String = "edu.uwaterloo.cs.todo"
 
@@ -15,36 +11,12 @@ expect fun writeConfigFile(config: CloudServiceConfig, configFilePath: String = 
 
 expect fun getHashedPassword(userName: String, password: String): ByteArray
 
-fun breakLines(s: String, lineWidth: Int): String {
-    return buildString {
-        var currentLineLength = 0
-        for (word in s.split(Regex("\\\\s+"))) {
-            if (currentLineLength + 1 + word.length > lineWidth) {
-                append("\n")
-                currentLineLength = 0
-            } else {
-                append(" ")
-                currentLineLength++
-            }
+expect fun breakLines(s: String, lineWidth: Int): String
 
-            append(word)
-            currentLineLength += word.length
-        }
-    }
-}
+expect fun serializeItemList(list: List<TodoItemModel>): String
 
-fun serializeItemList(list: List<TodoItemModel>): String {
-    return Json.encodeToString(list)
-}
+expect fun deserializeItemList(json: String): List<TodoItemModel>
 
-fun deserializeItemList(json: String): List<TodoItemModel> {
-    return Json.decodeFromString(json)
-}
+expect fun serializeCategoryList(list: List<TodoCategoryModel>): String
 
-fun serializeCategoryList(list: List<TodoCategoryModel>): String {
-    return Json.encodeToString(list)
-}
-
-fun deserializeCategoryList(json: String): List<TodoCategoryModel> {
-    return Json.decodeFromString(json)
-}
+expect fun deserializeCategoryList(json: String): List<TodoCategoryModel>
