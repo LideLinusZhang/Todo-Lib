@@ -16,6 +16,6 @@ actual data class TodoItemModel(
     val description: String,
     val favoured: Boolean,
     val importance: ItemImportance,
-    val deadline: LocalDate?,
+    val deadline: LocalDate? = null,
     val modifiedTime: LocalDateTime
 )
